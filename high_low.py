@@ -1,7 +1,7 @@
 import random
 
 game_on = False
-guess = False
+guesses = None
 
 secret = None
 
@@ -10,17 +10,46 @@ def easy():
      global game_on
      secret = float(random.randrange(0,100))
      while game_on == True:
-     	guess = int(raw_input('Guess a number. '))
+     	guess = int(raw_input('Guess a number from 1 to 100. '))
 	if guess > secret:
 		print('Too High! Try Again. ')
 	elif guess < secret:
 		print('Too Low! Try Again. ')
 	elif guess == secret:
 		print('YOU WIN! ')
-		play_again()	
+		play_again()
 
-# function for hard version
+def medium():
+     global secret
+     global game_on
+     secret = float(random.randrange(0,100))
+     guesses = 10
+     for i in range(guesses):
+	guess = int(raw_input('Guess a number from 1 to 100. You have 10 guesses. '))
+	if guess > secret:
+		print('Too High! Try Again. ')
+	elif guess < secret:
+		print('Too Low! Try Again. ')
+	elif guess == secret:
+		print('YOU WIN! ')
+		play_again()
 
+def hard():
+     global secret
+     global game_on
+     global guesses
+     global random
+     secret = float(random.randrange(0,1000))
+     guesses = 10
+     for i in range(guesses):
+	guess = float(raw_input('Guess a number from 0 to 1000. You have 10 guesses. '))
+	if guess > secret:
+		print('Too High! Try Again. ')
+	elif guess < secret:
+		print('Too Low! Try Again. ')
+	elif guess == secret:
+		print('YOU WIN! ')
+		play_again()
 def start():
      global game_on
      game_on = True
